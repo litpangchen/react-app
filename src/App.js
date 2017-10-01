@@ -7,6 +7,7 @@ import TopNavigation from "./navigation/TopNavigation";
 import HomePage from "./components/HomePage";
 import GuestRoute from "./components/routes/GuestRoute";
 import LoginForm from "./components/LoginForm";
+import TodoPage from "./components/TodoPage";
 
 class App extends React.Component {
 
@@ -19,12 +20,10 @@ class App extends React.Component {
             <div className="container">
                 <div className="App">
                     <div className="container-fluid">
-                        <p>
-                           
-                        </p>
                         {this.props.isAuthenticated && <TopNavigation />}
                         <Route location={this.props.location} path="/" exact component={HomePage}/>
                         <GuestRoute location={this.props.location} path="/login" exact component={LoginForm}/>
+                        <GuestRoute location={this.props.location} path="/todo" exact component={TodoPage}/>
                     </div>
                 </div>
             </div>
