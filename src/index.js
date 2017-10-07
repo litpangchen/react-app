@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
+import logger from "redux-logger";
 import rootReducer from "./reducer/rootReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
@@ -11,17 +12,17 @@ import {BrowserRouter, Route} from "react-router-dom";
 import registerServiceWorker from "./registerServiceWorker";
 import {userLoggedIn} from "./actions/auth";
 import {initialize, addTranslation} from "react-localize-redux";
-import json from './global.locale.json';
+import json from "./global.locale.json";
 
 const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(thunk))
+    composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
 store.dispatch(addTranslation(json));
 
 const languages = ['en', 'fr', 'es'];
-store.dispatch(initialize(languages, { defaultLanguage: 'fr' }));
+store.dispatch(initialize(languages, {defaultLanguage: 'fr'}));
 
 if (localStorage.bookwormJWT) {
     const user = {

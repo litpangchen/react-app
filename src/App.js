@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import GuestRoute from "./components/routes/GuestRoute";
 import LoginForm from "./components/LoginForm";
 import TodoPage from "./components/TodoPage";
+import RedditPage from "./components/reddit/RedditAsyncApp";
 
 class App extends React.Component {
 
@@ -24,6 +25,7 @@ class App extends React.Component {
                         <Route location={this.props.location} path="/" exact component={HomePage}/>
                         <GuestRoute location={this.props.location} path="/login" exact component={LoginForm}/>
                         <GuestRoute location={this.props.location} path="/todo" exact component={TodoPage}/>
+                        <GuestRoute location={this.props.location} path="/reddit" exact component={RedditPage}/>
                     </div>
                 </div>
             </div>
